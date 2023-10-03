@@ -1,0 +1,24 @@
+name: practice project
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: Run ESLint
+        uses: stefanoeb/eslint-action@1.0.2
+        with: 
+          files: "*.jsx"
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: do test
+        run: vitest run
