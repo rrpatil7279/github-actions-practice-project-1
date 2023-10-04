@@ -4,8 +4,14 @@ on:
     inputs:
       environment:
         description: 'Environment to run tests against'
-        type: environment
+        type: choice
         required: true
+        options:
+        - sbx
+        - dev
+        - tst
+        - val
+        - prd
 jobs:
   lint:
     runs-on: ubuntu-latest
