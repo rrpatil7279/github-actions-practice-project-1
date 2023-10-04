@@ -1,5 +1,11 @@
 name: practice project
-on: push
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 jobs:
   lint:
     runs-on: ubuntu-latest
